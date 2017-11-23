@@ -1,5 +1,5 @@
 <template>
-    <button class="set" >
+    <button role="button" class="set" >
         <strong>{{number}}</strong>
     </button> 
 </template>

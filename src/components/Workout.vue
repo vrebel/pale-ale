@@ -3,7 +3,10 @@
     <h1 class="title">{{title}}</h1>
     <div>
       <template v-for="(item,i) in list">
-       <exercise :key="i" :exercise="item" />
+       <exercise 
+        :key="i" 
+        :title="item.exercise"
+        :exercise="{sets: item.sets, reps: item.repetitions}"  />
       </template>
     </div>
   </div>

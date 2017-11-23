@@ -2,7 +2,10 @@
   <div>
     <span class="exercise">{{title}}</span>
     <div class="sets">
-         <set />
+         <set
+          v-for="set in exercise.sets" 
+          :key="set"
+          :number="exercise.reps" />
     </div>
   </div>
 </template>
@@ -19,8 +22,10 @@ export default {
   },
   props: {
     title: {
+      type: String
     },
     exercise: {
+      type: Object
     }
   },
   computed: {

@@ -2,7 +2,6 @@
   <div id="app">
     <div class="wrapper">
       <template v-for="( item, key, index ) in workouts">
-        <!-- <List :title="key" :list="item" :key="index" /> -->
         <workout :title="key" :list="item" :key="index" />
       </template>
     </div>
