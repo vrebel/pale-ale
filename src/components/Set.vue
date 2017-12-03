@@ -1,5 +1,5 @@
 <template>
-    <button role="button" class="set" >
+    <button @click="check" role="button" class="set" :class="{active: selected}">
         <strong>{{number}}</strong>
     </button> 
 </template>
@@ -8,6 +8,7 @@ export default {
   name: 'set',
   data: function () {
     return {
+      selected: false
     }
   },
   props: {
@@ -17,6 +18,9 @@ export default {
   computed: {
   },
   methods: {
+    check () {
+      this.selected = !this.selected
+    }
   }
 }
 </script>
@@ -32,7 +36,8 @@ export default {
   margin-right: .85rem;
   text-align: center;
 }
-.set:active, .active{
+
+.active{
   background-color:#2c3e50;
   color: white;
 }

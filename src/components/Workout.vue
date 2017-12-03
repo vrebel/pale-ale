@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="workout">
     <h1 class="title">{{title}}</h1>
     <div>
       <template v-for="(item,i) in list">
@@ -39,5 +39,6 @@ export default {
    text-transform:capitalize;
    font-weight: bold;
    font-size: 2rem;
+   margin-bottom: 1rem;
 }
 </style>
