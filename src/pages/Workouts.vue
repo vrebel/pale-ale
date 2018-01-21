@@ -1,8 +1,11 @@
 <template>
   <div id="workouts">
-    <template v-for="( item, key, index ) in workouts">
-      <div :key="index" class="wrapper">
-        <workout :title="key" :list="item" :key="index" />
+    <template v-for="(workout, key) in workouts">
+      <div :key="workout.order" class="wrapper">
+        <workout 
+          :title="workout.name" 
+          :list="workout.exercises"
+          :workoutKey="key" />
         <!-- <button class="submit" :key="index">Done!</button> -->
       </div>
     </template>

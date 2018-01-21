@@ -2,11 +2,12 @@
   <div class="workout">
     <h1 class="title">{{title}}</h1>
     <div>
-      <template v-for="(item,i) in list">
+      <template v-for="(item,key) in list">
        <exercise 
-        :key="i" 
+        :key="key" 
         :title="item.exercise"
-        :exercise="{sets: item.sets, reps: item.repetitions}"  />
+        :exercise="item.sets"
+        :exerciseKey="key"  />
       </template>
     </div>
   </div>
@@ -26,6 +27,8 @@ export default {
     list: {
     },
     title: {
+    },
+    workoutKey: {
     }
   },
   computed: {

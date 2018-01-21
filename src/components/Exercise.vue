@@ -9,9 +9,9 @@
     </div>
     <div class="sets">
          <set
-          v-for="set in exercise.sets" 
-          :key="set"
-          :number="exercise.reps" />
+          v-for="(set, index) in exercise" 
+          :key="index"
+          :number="set" />
     </div>
   </div>
 </template>
@@ -31,7 +31,9 @@ export default {
       type: String
     },
     exercise: {
-      type: Object
+      type: Array
+    },
+    exerciseKey: {
     }
   },
   computed: {

@@ -1,90 +1,81 @@
 {
-  "pull": [{
-      "sets": 3,
-      "repetitions": 8,
-      "exercise": "Pulldowns OR Pullups OR chinups"
-    },
-    {
-      "sets": 3,
-      "repetitions": 8,
-      "exercise": "seated cable rows OR chest supported rows"
-    },
-    {
-      "sets": 5,
-      "repetitions": 15,
-      "exercise": "face pulls"
-    },
-    {
-      "sets": 4,
-      "repetitions": 8,
-      "exercise": "hammer curls"
-    },
-    {
-      "sets": 4,
-      "repetitions": 8,
-      "exercise": "dumbbell curls "
-    }
-  ],
-  "push": [{
-      "sets": 5,
-      "repetitions": 5,
-      "exercise": "bench press || overhead press"
-    },
-    {
-      "sets": 3,
-      "repetitions": 8,
-      "exercise": "overhead press || bench press"
-    },
-    {
-      "sets": 3,
-      "repetitions": 8,
-      "exercise": "incline dumbbell press"
-    },
-    {
-      "sets": 3,
-      "repetitions": 8,
-      "exercise": "triceps pushdowns SS"
-    },
-    {
-      "sets": 3,
-      "repetitions": 15,
-      "exercise": "lateral raises SS"
-    },
-    {
-      "sets": 3,
-      "repetitions": 8,
-      "exercise": "overhead triceps extensions SS"
-    },
-    {
-      "sets": 3,
-      "repetitions": 15,
-      "exercise": "lateral raises SS"
-    }
-  ],
-  "legs": [{
-      "sets": 3,
-      "repetitions": 5,
-      "exercise": "squat"
-    },
-    {
-      "sets": 3,
-      "repetitions": 8,
-      "exercise": "Romanian Deadlift"
-    },
-    {
-      "sets": 3,
-      "repetitions": 8,
-      "exercise": "leg press"
-    },
-    {
-      "sets": 3,
-      "repetitions": 8,
-      "exercise": "leg curls"
-    },
-    {
-      "sets": 5,
-      "repetitions": 8,
-      "exercise": "calf raises"
-    }
-  ]
+  "0": {
+      "name":"pull",
+      "exercises": [{
+          "sets": [8, 8, 8],
+          "exercise": "Pulldowns OR Pullups OR chinups"
+        },
+        {
+          "sets": [8, 8, 8],
+          "exercise": "seated cable rows OR chest supported rows"
+        },
+        {
+          "sets": [15, 15, 15, 15, 15],
+          "exercise": "face pulls"
+        },
+        {
+          "sets": [8, 8, 8, 8, 8],
+          "exercise": "hammer curls"
+        },
+        {
+          "sets": [8, 8, 8, 8, 8],
+          "exercise": "dumbbell curls "
+        }
+      ]
+  },
+  "1": {
+      "name":"push",
+      "exercises": [{
+          "sets": [5, 5, 5, 5, 5],
+          "exercise": "bench press || overhead press"
+        },
+        {
+          "sets": [8, 8, 8],
+          "exercise": "overhead press || bench press"
+        },
+        {
+          "sets": [8, 8, 8],
+          "exercise": "incline dumbbell press"
+        },
+        {
+          "sets": [8, 8, 8],
+          "exercise": "triceps pushdowns SS"
+        },
+        {
+          "sets": [15, 15, 15],
+          "exercise": "lateral raises SS"
+        },
+        {
+          "sets": [8, 8, 8],
+          "exercise": "overhead triceps extensions SS"
+        },
+        {
+          "sets": [15, 15, 15],
+          "exercise": "lateral raises SS"
+        }
+      ]},
+  "2": {
+      "name":"legs",
+      "exercises": [{
+          "sets": [5, 5, 5],
+          "exercise": "squat"
+        },
+        {
+          "sets": [8, 8, 8],
+          "exercise": "Romanian Deadlift"
+        },
+        {
+          "sets": [8, 8, 8],
+          "exercise": "leg press"
+        },
+        {
+          "sets": [8, 8, 8],
+          "exercise": "leg curls"
+        },
+        {
+          "sets": [8, 8, 8, 8, 8],
+          "exercise": "calf raises"
+        }
+      ]
+  }
 }

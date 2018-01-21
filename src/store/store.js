@@ -1,14 +1,29 @@
 import templates from '../templates/templates'
 export default function ({firebase}) {
   const db = firebase.database()
-
+  const setTemplate = function (template, uid) {
+    for (let prop in template) {
+      let key = db.ref(`/users/${uid}/template`).push().key
+      let tmp = {}
+      tmp['order'] = prop
+      tmp['name'] = template[prop].name
+      db.ref(`/users/${uid}/template/${key}`).update(tmp)
+      template[prop].exercises.map(item => {
+        db.ref(`/users/${uid}/template/${key}/exercises`).push({
+          'sets': item.sets,
+          'exercise': item.exercise
+        })
+      })
+    }
+  }
   return {
     state: {
       workouts: {
       },
       currentPage: 'Login',
       accountDetails: null,
-      userStatus: ''
+      userStatus: '',
+      workoutKey: null
     },
     getters: {
       workouts: state => state.workouts,
@@ -35,6 +50,9 @@ export default function ({firebase}) {
       },
       setWorkouts (state, workouts) {
         state.workouts = workouts
+      },
+      setWorkoutKey (state, key) {
+        state.workoutKey = key
       }
     },
     actions: {
@@ -81,14 +99,19 @@ export default function ({firebase}) {
         let userRef = db.ref(`/users/${state.accountDetails.uid}`)
         userRef.once('value').then(snapshot => {
           if (!snapshot.val().template) {
-            userRef.update({
-              template: templates.ppl
-            })
-            commit('setWorkouts', templates.ppl)
-          } else {
-            commit('setWorkouts', snapshot.val().template)
+            setTemplate(templates.ppl, state.accountDetails.uid)
           }
         })
+        db.ref(`/users/${state.accountDetails.uid}/template`).once('value').then(snapshot => {
+          commit('setWorkouts', snapshot.val())
+        })
+      },
+      saveWorkout ({state, commit}) {
+        let workoutKey = db.ref(`/workouts/${state.accountDetails.uid}/workoutList`).push().key
+        commit('setWorkoutKey', workoutKey)
+        let updates = {}
+        updates[`/workouts/${state.accountDetails.uid}/workoutList/${workoutKey}`] = {}
+        firebase.database().ref().update(updates)
       }
     }
   }
