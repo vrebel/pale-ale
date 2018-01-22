@@ -1,0 +1,100 @@
+{
+    "0": {
+        "name":"Chest, shoulders, abs",
+        "exercises": [
+          {
+            "sets": [8, 8],
+            "exercise": "Incline chest press"
+          },
+          {
+            "sets": [60, 60, 60, 60],
+            "exercise": "Plank"
+          },
+          {
+            "sets": [8, 8, 8, 8],
+            "exercise": "Overhead press"
+          },
+          {
+            "sets": [8, 8, 8, 8],
+            "exercise": "Hanging leg raise"
+          },
+          {
+            "sets": [8, 8],
+            "exercise": "Incline chest press"
+          },
+          {
+            "sets": [8, 8, 8, 8],
+            "exercise": "Front raise"
+          }
+        ]
+    },
+    "1": {
+        "name":"Legs, pickup",
+        "exercises": [{
+            "sets": [8, 8, 8, 8],
+            "exercise": "Squat"
+          },
+          {
+            "sets": [8, 8, 8, 8],
+            "exercise": "Oblique twist"
+          },
+          {
+            "sets": [8, 8, 8, 8],
+            "exercise": "Shrug"
+          },
+          {
+            "sets": [8, 8, 8, 8],
+            "exercise": "Calf raise"
+          },
+          {
+            "sets": [8, 8, 8],
+            "exercise": "Hamstring curl"
+          },
+          {
+            "sets": [8, 8, 8, 8],
+            "exercise": "Deadlift"
+          },
+          {
+            "sets": [15, 15, 15, 15],
+            "exercise": "Forearm curl in"
+          }
+        ]},
+    "2": {
+        "name":"Biceps, triceps, back",
+        "exercises": [
+          {
+            "sets": [8, 8, 8, 8],
+            "exercise": "Row"
+          },
+          {
+            "sets": [8, 8, 8, 8],
+            "exercise": "Pulldown"
+          },
+          {
+            "sets": [8, 8],
+            "exercise": "Tricep Pulldown"
+          },
+          {
+            "sets": [8, 8],
+            "exercise": "Bicep curl"
+          },
+          {
+            "sets": [8, 8],
+            "exercise": "Tricep Pulldown"
+          },
+          {
+            "sets": [15, 15, 15, 15],
+            "exercise": "Forearm curl up"
+          },
+          {
+            "sets": [8, 8],
+            "exercise": "Bicep curl"
+          },
+          {
+            "sets": [15, 15, 15, 15],
+            "exercise": "Forearm curl back"
+          }
+        ]
+    }
+  }
+  

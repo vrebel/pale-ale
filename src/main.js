@@ -25,6 +25,7 @@ Vue.config.productionTip = false
 Vue.use(Vuex)
 
 const store = new Vuex.Store(Store({firebase}))
+// store.registerModule('./store/settings.store.js')
 
 /* eslint-disable no-new */
 new Vue({

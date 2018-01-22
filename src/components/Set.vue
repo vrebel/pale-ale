@@ -13,6 +13,10 @@ export default {
   },
   props: {
     number: {
+      type: Number
+    },
+    index: {
+      type: Number
     }
   },
   computed: {
@@ -20,6 +24,7 @@ export default {
   methods: {
     check () {
       this.selected = !this.selected
+      this.$emit('check', {selected: this.selected, index: this.index})
     }
   }
 }

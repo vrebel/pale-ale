@@ -3,7 +3,7 @@
     <div class="title-wrapper">
       <span class="exercise">{{title}}</span>
       <div class="weight-input">
-        <input type="number">
+        <input @change="setWeight($event)" type="number">
       </div>
       <span class="weight-unit">Kg</span>
     </div>
@@ -11,7 +11,9 @@
          <set
           v-for="(set, index) in exercise" 
           :key="index"
-          :number="set" />
+          :number="set"
+          :index="index"
+          @check="setChecked" />
     </div>
   </div>
 </template>
@@ -39,6 +41,13 @@ export default {
   computed: {
   },
   methods: {
+    setChecked ({selected, index}) {
+      this.$emit('check', {exerciseKey: this.exerciseKey, selected, index})
+    },
+    setWeight (e) {
+      let weight = e.target.valueAsNumber || 0
+      this.$emit('weight', {exerciseKey: this.exerciseKey, weight})
+    }
   }
 }
 </script>

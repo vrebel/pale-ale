@@ -6,7 +6,7 @@
           :title="workout.name" 
           :list="workout.exercises"
           :workoutKey="key" />
-        <!-- <button class="submit" :key="index">Done!</button> -->
+        <button @click="done(key)" :disabled="isDisabled" class="submit" :class="buttonClass" >{{buttonText}}</button>
       </div>
     </template>
   </div>
@@ -20,12 +20,17 @@ export default {
   name: 'workouts',
   data: function () {
     return {
+      buttonText: 'Done!',
+      buttonClass: ''
     }
   },
   computed: {
     ...mapGetters([
       'workouts'
-    ])
+    ]),
+    isDisabled () {
+      return this.buttonClass !== ''
+    }
   },
   components: {
     workout
@@ -35,8 +40,14 @@ export default {
   },
   methods: {
     ...mapActions([
-      'requestUserWorkouts'
-    ])
+      'requestUserWorkouts',
+      'saveWorkout'
+    ]),
+    done (key) {
+      this.saveWorkout({workoutID: key})
+      this.buttonText = 'Saved'
+      this.buttonClass = 'sucess'
+    }
   }
 }
 </script>
@@ -52,15 +63,27 @@ export default {
 }
 .wrapper{
   flex: 1 0 100%;
+  position: relative;
 }
 
 .submit{
   padding: .5rem 1rem;
+  width: 100%;
   background-color: white;
   border: 2px solid #2c3e50;
   font-size: 1rem;
   color: #2c3e50;
   font-weight: bold;
+  margin-top: 1rem;
+
+  
+}
+.submit.disabled {
+  opacity: .5;
+}
+.submit.sucess {
+  border: 2px solid #2c5044;
+  color: #2c5044;
 }
 .submit:focus{
   outline: none;

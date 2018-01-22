@@ -7,13 +7,16 @@
         :key="key" 
         :title="item.exercise"
         :exercise="item.sets"
-        :exerciseKey="key"  />
+        :exerciseKey="key"
+        @check="commitWorkout"
+        @weight="updateWeight"  />
       </template>
     </div>
   </div>
 </template>
 <script>
 import exercise from './Exercise'
+import { mapMutations } from 'vuex'
 
 export default {
   data: function () {
@@ -34,6 +37,16 @@ export default {
   computed: {
   },
   methods: {
+    ...mapMutations([
+      'updateExerciseDoneSets',
+      'updateExerciseWeight'
+    ]),
+    commitWorkout ({exerciseKey, selected, index}) {
+      this.updateExerciseDoneSets({workoutKey: this.workoutKey, exerciseKey, selected, index})
+    },
+    updateWeight ({exerciseKey, weight}) {
+      this.updateExerciseWeight({workoutKey: this.workoutKey, exerciseKey, weight})
+    }
   }
 }
 </script>
