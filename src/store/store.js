@@ -11,13 +11,15 @@ export default function ({firebase}) {
       template[prop].exercises.map(item => {
         db.ref(`/users/${uid}/template/${key}/exercises`).push({
           'sets': item.sets,
-          'exercise': item.exercise
+          'exercise': item.exercise,
+          'templateID': key
         })
       })
     }
   }
   return {
     state: {
+      defaultTemplate: 'julianB',
       workouts: {
       },
       currentPage: 'Login',
@@ -30,7 +32,8 @@ export default function ({firebase}) {
       currentPage: state => state.currentPage,
       isUserSignedIn: (state, getters) => getters.userStatus === 'Signed in',
       userStatus: state => state.userStatus,
-      accountDetails: state => state.accountDetails
+      accountDetails: state => state.accountDetails,
+      getExerciseWeight: state => (workoutID, exerciseID) => state.workouts[workoutID].exercises[exerciseID].weight
     },
     mutations: {
       setCurrentPage (state, page) {
@@ -63,7 +66,7 @@ export default function ({firebase}) {
         state.workouts[workoutKey].exercises[exerciseKey].done = doneArr
       },
       updateExerciseWeight (state, {workoutKey, exerciseKey, weight}) {
-        state.workouts[workoutKey].exercises[exerciseKey].weight = weight
+        state.workouts[workoutKey].exercises[exerciseKey] = {...state.workouts[workoutKey].exercises[exerciseKey], ...{weight}}
       }
     },
     actions: {
@@ -106,16 +109,17 @@ export default function ({firebase}) {
           console.log(error)
         })
       },
-      requestUserWorkouts ({state, commit}) {
+      requestUserWorkouts ({state, commit, dispatch}) {
         let userRef = db.ref(`/users/${state.accountDetails.uid}`)
         userRef.once('value').then(snapshot => {
           if (!snapshot.val().template) {
-            setTemplate(templates.julianB, state.accountDetails.uid)
+            setTemplate(templates[state.defaultTemplate], state.accountDetails.uid)
           }
         })
         db.ref(`/users/${state.accountDetails.uid}/template`).once('value').then(snapshot => {
           commit('setWorkouts', snapshot.val())
         })
+        dispatch('setWeights')
       },
       saveWorkout ({state, commit}, {workoutID}) {
         let workoutKey = db.ref(`/workouts/${state.accountDetails.uid}/workoutList`).push().key
@@ -123,6 +127,26 @@ export default function ({firebase}) {
         let updates = {}
         updates[`/workouts/${state.accountDetails.uid}/workoutList/${workoutKey}`] = state.workouts[workoutID]
         firebase.database().ref().update(updates)
+      },
+      setWeights ({state, commit}) {
+        let ref = `/workouts/${state.accountDetails.uid}/workoutList`
+        db.ref(ref).once('value').then((snapshot) => {
+          let workoutList = Object.values(snapshot.val())
+          let workoutKeys = Object.keys(state.workouts)
+          debugger
+          const findWorkout = (key) => workoutList.filter(workout => workout.templateID === key)
+          workoutKeys.map(findWorkout).map(list => {
+            let last = list.pop()
+            let workoutKey = last.templateID
+            if (last) {
+              let exercises = last.exercises
+              for (let exerciseKey in exercises) {
+                let weight = exercises[exerciseKey].weight
+                commit('updateExerciseWeight', { workoutKey, exerciseKey, weight })
+              }
+            }
+          })
+        })
       }
     }
   }

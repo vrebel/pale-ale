@@ -3,7 +3,7 @@
     <div class="title-wrapper">
       <span class="exercise">{{title}}</span>
       <div class="weight-input">
-        <input @change="setWeight($event)" type="number">
+        <input :value="exerciseWeight" @change="setWeight($event)" type="number">
       </div>
       <span class="weight-unit">Kg</span>
     </div>
@@ -19,6 +19,8 @@
 </template>
 <script>
 import set from './Set'
+import { mapMutations, mapGetters } from 'vuex'
+
 export default {
   name: 'exercise',
   data: function () {
@@ -27,6 +29,10 @@ export default {
   },
   components: {
     set
+  },
+  model: {
+    event: 'change',
+    prop: 'value'
   },
   props: {
     title: {
@@ -39,14 +45,25 @@ export default {
     }
   },
   computed: {
+    ...mapGetters([
+      'getExerciseWeight'
+    ]),
+    exerciseWeight () {
+      let workoutKey = this.$parent.$options.propsData.workoutKey
+      return this.getExerciseWeight(workoutKey, this.exerciseKey)
+    }
   },
   methods: {
+    ...mapMutations([
+      'updateExerciseWeight'
+    ]),
     setChecked ({selected, index}) {
       this.$emit('check', {exerciseKey: this.exerciseKey, selected, index})
     },
     setWeight (e) {
       let weight = e.target.valueAsNumber || 0
-      this.$emit('weight', {exerciseKey: this.exerciseKey, weight})
+      let workoutKey = this.$parent.$options.propsData.workoutKey
+      this.updateExerciseWeight({workoutKey, exerciseKey: this.exerciseKey, weight})
     }
   }
 }

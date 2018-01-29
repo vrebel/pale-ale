@@ -8,8 +8,7 @@
         :title="item.exercise"
         :exercise="item.sets"
         :exerciseKey="key"
-        @check="commitWorkout"
-        @weight="updateWeight"  />
+        @check="commitWorkout"  />
       </template>
     </div>
   </div>
@@ -38,14 +37,10 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'updateExerciseDoneSets',
-      'updateExerciseWeight'
+      'updateExerciseDoneSets'
     ]),
     commitWorkout ({exerciseKey, selected, index}) {
       this.updateExerciseDoneSets({workoutKey: this.workoutKey, exerciseKey, selected, index})
-    },
-    updateWeight ({exerciseKey, weight}) {
-      this.updateExerciseWeight({workoutKey: this.workoutKey, exerciseKey, weight})
     }
   }
 }
