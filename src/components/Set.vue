@@ -29,25 +29,27 @@ export default {
   }
 }
 </script>
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .set{
   border-radius: 50%;
-  border: 2px solid #2c3e50;
+  border: 2px solid $primary;
   background-color: transparent;
-  color: #2c3e50;
+  color: $primary;
   height: 2.25rem;
   width: 2.25rem;
   font-size: 1rem;
   margin-right: .85rem;
   text-align: center;
+  
+  &:focus{
+    outline: none;
+  }
 }
 
 .active{
-  background-color:#2c3e50;
+  background-color:$primary;
   color: white;
 }
 
-.set:focus{
-  outline: none;
-}
+
 </style>

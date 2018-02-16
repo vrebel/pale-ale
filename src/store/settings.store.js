@@ -3,11 +3,16 @@ export const state = {
   unit: 'kg',
   increment: 1.5
 }
-export const getters = {}
+export const getters = {
+  restTime: state => state.restTime,
+  unit: state => state.unit,
+  increment: state => state.increment
+}
 export const mutations = {}
 export const actions = {}
 
 export default {
+  namespaced: true,
   state,
   getters,
   mutations,

@@ -3,6 +3,7 @@ const path = require('path')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const pkg = require('../package.json')
+const CssResources = ['./src/styles/definitions.scss']
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -28,6 +29,14 @@ exports.cssLoaders = function (options) {
     }
   }
 
+  const sassResourceLoader = {
+      loader: 'sass-resources-loader',
+      options: {
+          resources: CssResources,
+          cssSourceMap: options.sourceMap
+      } 
+  }
+
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
@@ -38,6 +47,7 @@ exports.cssLoaders = function (options) {
           sourceMap: options.sourceMap
         })
       })
+      loaders.push(sassResourceLoader);
     }
 
     // Extract CSS when that option is specified
@@ -60,7 +70,8 @@ exports.cssLoaders = function (options) {
     sass: generateLoaders('sass', { indentedSyntax: true }),
     scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),
-    styl: generateLoaders('stylus')
+    styl: generateLoaders('stylus'),
+    'sass-resources-loader': generateLoaders('sass-resources',{ resources: CssResources })
   }
 }
 

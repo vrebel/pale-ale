@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import workout from '../components/Workout'
+import workout from '@Components/Workout'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -70,9 +70,9 @@ export default {
   padding: .5rem 1rem;
   width: 100%;
   background-color: white;
-  border: 2px solid #2c3e50;
+  border: 2px solid $primary;
   font-size: 1rem;
-  color: #2c3e50;
+  color: $primary;
   font-weight: bold;
   margin-top: 1rem;
 

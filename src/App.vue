@@ -6,8 +6,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Login from './pages/Login.vue'
-import Workouts from './pages/Workouts.vue'
+import Login from '@Pages/Login.vue'
+import Workouts from '@Pages/Workouts.vue'
 
 export default {
   name: 'app',
@@ -33,7 +33,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $primary;
 }
 
 .html{

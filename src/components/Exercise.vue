@@ -22,7 +22,7 @@
   </div>
 </template>
 <script>
-import set from './Set'
+import set from '@Components/Set'
 import { mapMutations, mapGetters } from 'vuex'
 
 export default {
@@ -97,13 +97,13 @@ export default {
 .weight-input{
   flex: 0 0 10%;
   margin-left: auto;
-  color: #2c3e50;
+  color: $primary;
 }
 
 input{
   outline: none;
   border: none;
-  border-bottom: 1px solid #2c3e50;
+  border-bottom: 1px solid $primary;
   width: 100%;
   height: 100%;
 }
@@ -111,7 +111,7 @@ input{
 .weight-unit{
   flex: 0 0 5%;
   margin-top: auto;
-  color: #2c3e50;
+  color: $primary;
 }
 
 .exercise-wrapper{

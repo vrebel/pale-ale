@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import exercise from './Exercise'
+import exercise from '@Components/Exercise'
 import { mapMutations } from 'vuex'
 
 export default {
