@@ -133,7 +133,6 @@ export default function ({firebase}) {
         db.ref(ref).once('value').then((snapshot) => {
           let workoutList = Object.values(snapshot.val())
           let workoutKeys = Object.keys(state.workouts)
-          debugger
           const findWorkout = (key) => workoutList.filter(workout => workout.templateID === key)
           workoutKeys.map(findWorkout).map(list => {
             let last = list.pop()

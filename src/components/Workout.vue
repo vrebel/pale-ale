@@ -45,7 +45,7 @@ export default {
   }
 }
 </script>
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .title{
    text-transform:capitalize;
    font-weight: bold;

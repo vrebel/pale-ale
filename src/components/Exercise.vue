@@ -3,7 +3,11 @@
     <div class="title-wrapper">
       <span class="exercise">{{title}}</span>
       <div class="weight-input">
-        <input :value="exerciseWeight" @change="setWeight($event)" type="number">
+        <input 
+          :value="exerciseWeight" 
+          @change="setWeight($event)"
+          type="number"
+          step="2.5">
       </div>
       <span class="weight-unit">Kg</span>
     </div>
@@ -68,7 +72,7 @@ export default {
   }
 }
 </script>
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .sets{
   display: flex;
