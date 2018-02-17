@@ -26,7 +26,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'workouts'
+      'workouts',
+      'accountDetails'
     ]),
     isDisabled () {
       return this.buttonClass !== ''
@@ -36,6 +37,10 @@ export default {
     workout
   },
   created () {
+    if (this.accountDetails === null) {
+      this.$router.push('login')
+      return
+    }
     this.requestUserWorkouts()
   },
   methods: {
@@ -52,7 +57,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #workouts{
   height:100%;
   display: flex;

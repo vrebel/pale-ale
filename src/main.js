@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import Store from '@Store/store'
 import Settings from '@Store/settings.store'
 import {firebase} from '@/firebase/config'
+import router from './router'
 
 Vue.config.productionTip = false
 
@@ -16,6 +17,7 @@ store.registerModule('settings', Settings)
 new Vue({
   el: '#app',
   store,
+  router,
   template: '<App/>',
   components: { App }
 })

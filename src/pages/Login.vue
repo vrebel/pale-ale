@@ -15,7 +15,7 @@ export default {
     }
   },
   created () {
-    this.initApp()
+    this.initApp(this)
   },
   computed: {
     ...mapGetters([
@@ -54,9 +54,22 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .firebaseui-idp-list{
   margin-top: 1rem;
+  button{
+      display: flex;
+      align-items: center;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: .25rem;
+      padding: .5rem;
+      margin: 0 auto;
+      box-shadow: 0 2px 4px rgba(0,0,0,.2);
+  }
+  .firebaseui-idp-text{
+    margin-left: .5rem;
+  }
 }
 img.firebaseui-idp-icon {
   width: 3rem;

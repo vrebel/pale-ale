@@ -70,7 +70,7 @@ export default function ({firebase}) {
       }
     },
     actions: {
-      initApp ({commit, getters}) {
+      initApp ({commit, getters}, vueRef) {
         firebase.auth().onAuthStateChanged(user => {
           let signInStatus = ''
           let accountDetails = null
@@ -97,7 +97,7 @@ export default function ({firebase}) {
               commit('setUserStatus', signInStatus)
               commit('setAccountDetails', accountDetails)
               commit('writeUserData')
-              commit('setCurrentPage', 'Workouts')
+              vueRef.$router.push('workouts')
             })
           } else {
             signInStatus = 'Signed out'
