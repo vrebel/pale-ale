@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 const firebase = require('firebase')
 const firebaseui = require('firebaseui')
 export default {
@@ -23,9 +23,6 @@ export default {
     ])
   },
   methods: {
-    ...mapMutations([
-      'setCurrentPage'
-    ]),
     ...mapActions([
       'initApp'
     ])

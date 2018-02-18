@@ -22,23 +22,18 @@ export default function ({firebase}) {
       defaultTemplate: 'julianB',
       workouts: {
       },
-      currentPage: 'Login',
       accountDetails: null,
       userStatus: '',
       workoutKey: null
     },
     getters: {
       workouts: state => state.workouts,
-      currentPage: state => state.currentPage,
       isUserSignedIn: (state, getters) => getters.userStatus === 'Signed in',
       userStatus: state => state.userStatus,
       accountDetails: state => state.accountDetails,
       getExerciseWeight: state => (workoutID, exerciseID) => state.workouts[workoutID].exercises[exerciseID].weight
     },
     mutations: {
-      setCurrentPage (state, page) {
-        state.currentPage = page
-      },
       setUserStatus (state, status) {
         state.userStatus = status
       },
