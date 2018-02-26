@@ -1,27 +1,22 @@
 # pale-ale
 
-> A Vue.js project
+> Progressive Web Application for logging workouts
 
-## Build Setup
+## Project overview
+- Vue
+- Vuex
+- Vue Router
+- firebase
+- Jest
+- webpack
+- Sass
 
-``` bash
-# install dependencies
-npm install
+## Goal
+App for registering workouts, add workout templates, set weight progression, access quick videos of workouts.
 
-# serve with hot reload at localhost:8080
-npm run dev
+## Done so far
+Google auth
+Loads default workout template
+Logs weight and workouts
 
-# build for production with minification
-npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
